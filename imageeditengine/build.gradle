@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
   compileSdkVersion 26
@@ -15,6 +16,12 @@ android {
   }
 
   tasks.withType(JavaCompile) { compileTask -> compileTask.dependsOn(ndkBuild)
+  }
+  
+  // Needed for jitpack builds
+  packagingOptions {
+      doNotStrip '*/mips/*.so'
+      doNotStrip '*/mips64/*.so'
   }
 
   defaultConfig {
