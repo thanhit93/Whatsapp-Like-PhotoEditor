@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
   compileSdkVersion 27
+  ndkVersion "21.1.6352462"
   defaultConfig {
     applicationId "com.droidninja.photoeditengine"
     minSdkVersion 21
