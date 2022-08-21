@@ -4,19 +4,20 @@ apply plugin: 'com.github.dcendents.android-maven'
 android {
   compileSdkVersion 26
   buildToolsVersion '27.0.3'
+  ndkVersion "21.1.6352462"
 
-  task ndkBuild(type: Exec, description: 'run ndk-build') {
-    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-      workingDir 'src/main/jni'
-      commandLine 'ndk-build.cmd', '-j', Runtime.runtime.availableProcessors()
-    } else {
-      workingDir 'src/main/jni'
-      commandLine "$ndkDir/ndk-build", '-j', Runtime.runtime.availableProcessors()
-    }
-  }
+  // task ndkBuild(type: Exec, description: 'run ndk-build') {
+    // if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+      // workingDir 'src/main/jni'
+      // commandLine 'ndk-build.cmd', '-j', Runtime.runtime.availableProcessors()
+    // } else {
+     // workingDir 'src/main/jni'
+      // commandLine "$ndkDir/ndk-build", '-j', Runtime.runtime.availableProcessors()
+    // }
+ // }
 
-  tasks.withType(JavaCompile) { compileTask -> compileTask.dependsOn(ndkBuild)
-  }
+  // tasks.withType(JavaCompile) { compileTask -> compileTask.dependsOn(ndkBuild)
+ // }
   
   // Needed for jitpack builds
   packagingOptions {
